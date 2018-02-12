@@ -1,4 +1,12 @@
-<!DOCTYPE html>
+<?php
+session_start();
+
+if (!empty($_POST['email'])) {
+
+  $_SESSION['email'] = $_POST['email'];
+
+}
+?>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -30,31 +38,34 @@
 
 
 <!--// 01. Create a form with at least 2 text inputs and a submit button-->
-
-<form action="" method="get">
-  <p>Name: <input type="text" name="name"></p>
-  <p>E-mail: <input type="text" name="email"></p>
+<?php if (empty($_SESSION['email']) && empty($_POST['email'])): ?>
+<form action="03-assignment.php" method="POST">
+  <p>Name: <input type="text" name="first_name" value="<?php echo $_GET['first_name']; ?>"></p>
+  <p>E-mail: <input type="text" name="email" value="<?php echo $_GET['email']; ?>"></p>
 <input type="submit">
 </form>
 
 
 
 
-<!--// 02. This criterion is linked to a Learning Outcome Display URL parameter value for "first_name" text input-->
+<!--// 02. This criterion is linked to a Learning Outcome. Display URL parameter value for "first_name" text input-->
 
 <?php
-  
-?>
+    $nameUrl = $_GET['first_name'];
+    if (isset($nameUrl)) ?>
+    <?php echo ${nameUrl}?>
 
-<!--// 03. This criterion is linked to a Learning Outcome Display URL parameter value for "email" text input-->
+<!--// 03. This criterion is linked to a Learning Outcome. Display URL parameter value for "email" text input-->
 
 
-
+<?php
+    $emailUrl = $_GET['email'];
+    if (isset($emailUrl)) ?>
+    <?php echo ${emailUrl}?>
 
 
 <!--// 04. This criterion is linked to a Learning Outcome Display POST data once form has been submitted-->
-<?php
-  
-?>
+<p>Welcome, <?php echo $_POST["first_name"]; ?>.</p>
+<p>Your email address is: <?php echo $_POST["email"]; ?></p>
 </body>
 </html>
