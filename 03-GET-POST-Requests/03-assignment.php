@@ -1,12 +1,3 @@
-<?php
-session_start();
-
-if (!empty($_POST['email'])) {
-
-  $_SESSION['email'] = $_POST['email'];
-
-}
-?>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -38,7 +29,6 @@ if (!empty($_POST['email'])) {
 
 
 <!--// 01. Create a form with at least 2 text inputs and a submit button-->
-<?php if (empty($_SESSION['email']) && empty($_POST['email'])): ?>
 <form action="03-assignment.php" method="POST">
   <p>Name: <input type="text" name="first_name" value="<?php echo $_GET['first_name']; ?>"></p>
   <p>E-mail: <input type="text" name="email" value="<?php echo $_GET['email']; ?>"></p>
